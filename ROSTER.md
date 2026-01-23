@@ -1,7 +1,6 @@
 # Roster
-
-Each entry should denote a member of your team and look exactly like the following lines:
-
-* Kayleigh Duncan, @pattonsgirl, Instructor
-* Matt Kijowski, @mkijowski, Instructor
-* `<Real Name>, <@github-username>, <role on team>`
+* Gonzalez Daniel, @hanzipepper, team Captain
+* Prince Patel, @Prince-code-hub, programmer
+* Wens Kedar Barambona, @b-wens-kedar, programmer
+* Garry Francis, @Garry-Francis, programmer
+* Wyatt Upham, @Upham4, programmer
