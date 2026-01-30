@@ -48,3 +48,30 @@ In competitions, this often appears as:
 - Checking fingerprints and signatures
 
 ---
+
+### 3. Uses and Useful commands
+
+In cyber competitions, GPG commonly appears in:
+
+- Encrypting files or messages
+- Verifying file authenticity
+- Signing files to prove authorship
+- Importing and exporting public keys
+
+#### Useful File Types
+
+- `.asc` → ASCII‑armored (readable text)
+- `.gpg` → binary encrypted file
+- `.sig` → detached signature
+
+### Essential Commands
+
+- Generate a key pair:`gpg --full-generate-key`
+- List keys: `gpg --list-key` `sgpg --list-secret-keys`
+- Export a public key: `gpg --armor --export email@gmail.com > publickey.asc`
+- Import a public key: `gpg --import publickey.asc` Encrypt a file:`gpg --encrypt -r email@gmail.com file.txt`
+- Decrypt a file: `gpg --decrypt file.txt.gpg`
+- Sign a file:`gpg --sign file.txt`
+- Verify a signature: `gpg --verify file.txt.sig file.txt`
+
+---
