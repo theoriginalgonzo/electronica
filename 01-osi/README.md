@@ -55,15 +55,36 @@ NIST
         - FTP used for upload and download files
         - used control channel and data channel
 
-```
 
-To solve the question about headers you have to pick up keywords from the question and search those keywords on this site with ctrl + F [Wikipedia page](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields) It takes time to find right http header.
 
-```
+- To solve the question about headers you have to pick up keywords from the question and search those keywords on this site with ctrl + F [Wikipedia page](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields) It takes time to find right http header.
+
 
 - SSL
   - SSL certificate chains
+    - SSL certificate chains establish trust by linking a website’s certificate to a trusted root Certificate Authority through one or more intermediate CAs(certificate authorities).
   - add CSA and trust
+
+    - A Certificate Authority (CA) is a trusted third party that:
+
+        - Issues SSL certificates
+
+        - Verifies website identities
+
+        - Signs certificates cryptographically
+
+    - Trust in SSL means:
+
+        - Your browser already trusts certain root CAs
+
+        - These trusted root certificates are preinstalled in the OS/browser
+
+        - If a website’s certificate chains up to one of these roots → it is trusted
+
+        - If it does not → warning 
+
+
+- To solve the question from this section you have to go to site information you can access that from clicking left side of icon(== something like that) in url bar. From there you have to click "connection secure" and after that you have to click "certificate is valid". Now you can see the details like issued to or issued by in genral tab. if you go to details you can certificate heirachy and other details.
 
 ---
 
