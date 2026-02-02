@@ -56,6 +56,8 @@ NIST
         - used control channel and data channel
 
 
+- To solve In Linux, HTTP request headers can be viewed using curl command with the verbose option. Running curl -v <URL> displays the outgoing HTTP request, where lines prefixed with > show request headers such as Host, User-Agent, and Accept.
+
 
 - To solve the question about headers you have to pick up keywords from the question and search those keywords on this site with ctrl + F [Wikipedia page](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields) It takes time to find right http header.
 
@@ -83,6 +85,7 @@ NIST
 
         - If it does not → warning 
 
+- To solve in linux, SSL certificates can be viewed using curl command with curl -vI <URL> where you can look for SSL connection using TLS and server certificate. If server certificate is self signed then it is untrusted.
 
 - To solve the question from this section you have to go to site information you can access that from clicking left side of icon(== something like that) in url bar. From there you have to click "connection secure" and after that you have to click "certificate is valid". Now you can see the details like issued to or issued by in genral tab. if you go to details you can certificate heirachy and other details.
 
