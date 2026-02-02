@@ -25,4 +25,15 @@ Challenges often provide a specific environment or software version. Using a CPE
 ## Log Analysis & Forensics:
 You might find a trace of an attack in a log file. Recognizing a CVE ID in a log entry helps you identify what specific exploit a "hacker" used against the system.  Many times, knowing this is key to the objective.
 
- 
+## GYM answers:
+The CVE of the original POODLE attack: CVE-2014-3566.
+
+VSFTPD version with the smiley face backdoor: vsftpd version 2.3.4.
+
+First OpenSSL 1.0.1 version NOT vulnerable to Heartbleed: OpenSSL 1.0.1g.
+
+Original RFC number for Telnet: RFC 15 (published in 1969), though it was later formalized in RFC 854.
+
+Size of the SQL Slammer worm: 376 bytes.
+
+Samy is my…: hero. (This was the phrase the Samy worm forced onto the profiles of over one million MySpace users).  
