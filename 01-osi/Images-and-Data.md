@@ -18,7 +18,7 @@ Administrative Metadata is information on how an image is allowed to be used, su
 
 Metadata is often viewable from wherever the image is being stored. Adding or editing metadata will require specialized editing software, such as [metadata2go.com](https://www.metadata2go.com/).
 
-![picure of a lamb](images/Meta.jpg)
+![picure of a lamb](images/meta.jpg)
 
 Using metadata2go just by uploading this image I was able to answer the following questions about it:
 
@@ -60,3 +60,10 @@ You can read a barcode without a camera or specialized scanner using online tool
 
 Using that site I was able to answer the following questions about this barcode by uploading it to the website:
 
+- What format does the barcode use?
+
+Under "Type" was "Code39" meaning this is a Code39 barcode
+
+- What is the flag hidden in the barcode?
+
+The "flag" in this context is the value the barcode actually contains, which is "SKY-UZLU-5635"
