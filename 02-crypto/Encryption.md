@@ -82,4 +82,8 @@ print(f"{c}^{d} mod {n} = {result}")
 After running this script for each c value I got the final message:
 `SKY KYRG 5530`
 
+(you could also just use the [tausquared](https://www.tausquared.net/pages/ctf/rsa.html) rsa calculator but I made the script before I saw that was a thing.)
 
+## Thunderbird
+
+By downloading [Thunderbird](https://www.thunderbird.net/en-US/) you can use GPG keys to encrypt your emails. By uploading your public GPG key to Thunderbird you can send emails that can only be read by someone that has that public key's corresponding private key.
