@@ -42,13 +42,9 @@ The `strings` command extracts only the **readable text** from a binary file.
 ### Step 1: Extract readable strings from the image
 Run the following command:
 
-```bash
-
 ```
 strings -n 5 Steg1.jpg | grep -E '^[A-Za-z0-9_-]{5,}$'
 ```
-
-
 - grep uses Regex expression to elimate all other charcters beside a - z, A - Z, 0 - 9, - and _
 - strings output random charcters so -n 5 is used for readable characters 
 - this way we get short output of strings and we can find Flags very easily.
