@@ -43,13 +43,11 @@ Hash cracking is the process of attempting to recover the original input (e.g., 
 
 ### Tools for Cracking Password Hashes
 
-- **Ophcrack**: A Windows password cracker that uses rainbow tables to crack LM and NTLM hashes.
+- [Ophcrack](https://ophcrack.sourceforge.io/): A Windows password cracker that uses rainbow tables to crack LM and NTLM hashes.
 
-- **Hashcat**: A powerful and versatile password cracking tool that supports a wide range of hash types and attack modes. It can utilize GPU acceleration for faster cracking.
+- [Hashcat](https://hashcat.net/hashcat/): A powerful and versatile password cracking tool that supports a wide range of hash types and attack modes. It can utilize GPU acceleration for faster cracking.
 
-- **John the Ripper**: A popular password cracking tool that supports various hash types and is known for its ease of use and effectiveness.
-
-- **Cain & Abel**: A Windows-based password recovery tool that can crack various types of hashes, including NTLM.
+- [John the Ripper](https://www.openwall.com/john/): A popular password cracking tool that supports various hash types and is known for its ease of use and effectiveness.
 
 ## 4. Cracking Windows Password Hashes
 
@@ -63,19 +61,38 @@ Hash cracking is the process of attempting to recover the original input (e.g., 
 
 - [Download and install ophcrack.](https://ophcrack.sourceforge.io/)
 - [Obtain the appropriate rainbow tables for LM hashes. (XP special wordlist)](https://ophcrack.sourceforge.io/tables.php)(must download each table separately, and extract them to the same directory)
--
+- Use the md5sum.txt file to check that you have the correct files downloaded and load the folder by clicking Tables.
+- Load the individual hashes or a txt file containing all the hashes.
+- Click crack and the tool will attempt to crack the hashes using the loaded rainbow tables.
+- The results will be displayed in the NT Pwd column.
+
+![Ophcrack after cracking hashes](./pwdc_images/ophcrack_screenshot.png)
 
 ## 5. Cracking PDF Passwords
 
 - PDF files can be protected with passwords to restrict access or editing.
-- Tools like `pdfcrack` or `John the Ripper` can be used to crack PDF passwords.
-- The process typically involves using a wordlist or brute-force methods to guess the password and unlock the PDF file.
+- The password is used to generate an AES encryption key, which is then used to encrypt the contents of the PDF. The password hash is stored in the PDF file's metadata.
+- AES is a symmetric encryption algorithm that uses the same key for both encryption and decryption. The strength of AES depends on the key length, with common key lengths being 128, 192, and 256 bits.
+- Cracking a PDF password typically involves first extracting the password hash from the PDF and then running a password cracking tool, such as `pdfcrack` or `John the Ripper`.
+
+### PDF Gym Solutions:
+
+#### Using John the Ripper to crack PDF passwords.
+- Download and install John the Ripper. (https://www.openwall.com/john/) or just use Kali Linux which has it pre-installed.
+- Use `pdf2john` to extract the password hash from the PDF file: `pdf2john.py protected.pdf > hash.txt`
+- Use John the Ripper to crack the password hash: `john --wordlist=rockyou.txt hash.txt`
+- View the cracked password with the following command: `john --show hash.txt`
+- password: `keanureeves2008`
+- flag: SKY-KANU-5902
+
+
 
 ## 6. Citations
 
+- [Cyber Skyline Live: Cracking Password Hashes](https://www.youtube.com/watch?v=ll0xcqWF_AM&t=3384s)
+- [Cyber Skyline Live: PDF Password Cracking](https://www.youtube.com/watch?v=dd0uBmDwvC0&)
 - [Hash Functions and Password Hashing](https://en.wikipedia.org/wiki/Hash_function)
 - [Common Hash Types](https://en.wikipedia.org/wiki/List_of_hash_functions)
-- [Hashcat](https://hashcat.net/hashcat/)
-- [John the Ripper](https://www.openwall.com/john/)
-- [Cracking Windows Password Hashes](https://www.offensive-security.com/metasploit-unleashed/windows-password-hashing/)
+- [Cracking Windows Password Hashes](https://trove.cyberskyline.com/3f7c50f299f34ae896cc1d4955be2567)
 - [Cracking PDF Passwords](https://www.thegeekstuff.com/2010/06/pdf-password-cracker/)
+- Copilot for initial outline and structure.
