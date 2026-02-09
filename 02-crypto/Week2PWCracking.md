@@ -31,7 +31,7 @@ ZIP and RAR archives
 Network device hashes
 
 ## Common Hash Sources in Lab Environments
-###Linux Password Hashes
+### Linux Password Hashes
 
 /etc/shadow
 
@@ -70,7 +70,7 @@ Explicitly setting the format (recommended in competitions):
 ```john --format=NT hashes.txt```
 
 ## Wordlist-Based Password Auditing
-###Why Wordlists Work
+### Why Wordlists Work
 
 Most users:
 
@@ -83,7 +83,7 @@ Choose common words with minor variations
 Wordlists simulate real user behavior and are effective for password audits.
 
 ## Common Wordlists in Kali Linux
-###SecLists (Recommended)
+### SecLists (Recommended)
 
 SecLists is installed by default in Kali Linux:
 
@@ -233,3 +233,12 @@ Using a GPU such as the NVIDIA RTX 3070 with Hashcat provides significantly high
 
 If you paste only that content into a .md file, it will render correctly as one single Markdown document.
 If you want, I can also format it to GitHub Markdown, Obsidian, or Canvas LMS exactly.
+
+## Gym Excercise - Pokemon hashes
+
+a532443f3e04a9e00295a8cd2a75e080:golduck
+54c10b9736b70e75c6e505f340b6e2f1:basculin
+b8a24794813a47521b4be55747e0665a:rotom
+83b020b0a7b3c353e1c11b1647b53cda:celebi
+999cae1e22fe69d89d6f56e3050f18cb:goldeen
+
