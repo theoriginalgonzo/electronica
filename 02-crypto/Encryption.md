@@ -14,4 +14,6 @@ This will encrypt our input file into the output file while giving it a password
 
 The cyphers used in `<cyhper>` were as follows: `-aes-128-cbc -aes-128-ecb -aes-128-ofb` 128 being how many bits long the key is.
 
+To decrypt the images we take the same command structure used for the encryption but change the input file and add the `-d` flag:
 
+`openssl enc -<cypher> -d -in tux_<cypher>.enc -out tux_decrypted_<cypher>.png -pass pass:<yourpassword> -pbkdf2`
