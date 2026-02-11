@@ -8,9 +8,22 @@ The goal of CVE is the identify a security vulnerability while the CPE is to ide
 
 CVE tracks the vulnerability itself while the CPE tracks the software or hardware versions.
 
+1. National Vulnerability Database (NVD) – NIST
+
+Main database that links CVEs to CPEs, CVSS scores, and technical details.
+https://nvd.nist.gov/
+
+CVE Search:
+https://nvd.nist.gov/vuln/search
+
+CPE Search
+https://nvd.nist.gov/products/cpe/search
 ## How to use CVE and CPE together
 
-The National Vulnerability Database links these two systems together.  When new CVEs are published they are linked to specific CPEs making it easier for tools like Nmap or Tenable Nessus to identify them in a product that has that vulnerability.  
+The National Vulnerability Database links these two systems together.  When new CVEs are published they are linked to specific CPEs making it easier for tools like Nmap or Tenable Nessus to identify them in a product that has that vulnerability. 
+ 
+This site is very useful for quickly mapping software versions to CVEs.
+https://vulners.com
 
 ## Where it's useful in NCL
 
