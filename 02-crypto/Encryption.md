@@ -80,7 +80,7 @@ print(f"{c}^{d} mod {n} = {result}")
 ```
 
 After running this script for each c value I got the final message:
-`SKY KYRG 5530`
+`SKY KRYG 5530`
 
 (you could also just use the [tausquared](https://www.tausquared.net/pages/ctf/rsa.html) rsa calculator but I made the script before I saw that was a thing.)
 
