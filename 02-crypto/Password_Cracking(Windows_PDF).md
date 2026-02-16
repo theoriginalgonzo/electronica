@@ -79,7 +79,7 @@ Hash cracking is the process of attempting to recover the original input (e.g., 
 
 #### Using John the Ripper to crack PDF passwords.
 - Download and install John the Ripper. (https://www.openwall.com/john/) or just use Kali Linux which has it pre-installed.
-- Use `pdf2john` to extract the password hash from the PDF file: `pdf2john.py protected.pdf > hash.txt`
+- Use `pdf2john` to extract the password hash from the PDF file: `pdf2john protected.pdf > hash.txt`
 - Use John the Ripper to crack the password hash: `john --wordlist=rockyou.txt hash.txt`
 - View the cracked password with the following command: `john --show hash.txt`
 - password: `keanureeves2008`
