@@ -1,6 +1,11 @@
 # PGP/GPG Quick Guide
 
-ㅤ
+## 0. Outline
+
+- [1. What are PGP and GPG?](#1-what-are-pgp-and-gpg)
+- [2. Key Servers and Web of Trust](#2-key-servers-and-web-of-trust)
+- [3. Uses and GPG in NCL](#3-uses-and-gpg-in-ncl)
+- [4. Citations](#4-citations)
 
 ## 1. What are PGP and GPG?
 
@@ -81,3 +86,9 @@ Encryption ensures that only the intended recipient can read the data. Decryptio
 - Generate a key pair:`gpg --full-generate-key`
 - List keys: `gpg --list-key` `sgpg --list-secret-keys`
 - List signatures: `gpg --list-sigs`
+
+## 4. Citations
+
+- [What is PGP Encryption and How Does It Work?](https://www.varonis.com/blog/pgp-encryption)
+- [Cyber Skyline Live: PGP Lookup Tutorial](https://www.youtube.com/watch?v=ezH1SrlvkZg&t)
+- ChatGPT for initial template
