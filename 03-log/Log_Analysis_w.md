@@ -188,10 +188,39 @@ or to be sure to only count the status code field
 > `cat payments.log | grep -Eio '<ebl:StateOrProvince>.*</ebl:StateOrProvince>' | sed -r 's/.*>(.*)<.*/\1/' | sort | uniq -c | sort`
 
 ## 4. History/Database Analysis
+- SQL is the Structured Query Language used to communicate with databases. It allows you to query, insert, update, and delete data in a database.
+- SQL syntax:  
+    - `SELECT column1, column2 FROM table_name WHERE condition;`
+
+- Example: 
+    - `SELECT name, age FROM users WHERE age > 30;` retrieves the names and ages of users older than 30 from the "users" table.
+    - `SELECT * FROM orders;` retrieves all orders placed on or after January 1, 2024, from the "orders" table.
+
+Gym Answers:
+- For the competition, the livestream suggests using an online SQL viewer to analyze the SQL database (unless it's too large). 
+- Since it's an SQLite, upload it to [SQLite Viewer](https://inloop.github.io/sqlite-viewer/) and check the `moz_places` table.
+
+1. What did the user search for on craigslist?
+> bitcoin 
+2. What was the current price (USD) of bitcoin when the user was browsing?
+> $239.5
+3. What Bitcoin exchange did the user log in to?
+> Coinbase
+4. What is the email that was used to log into the exchange?
+> b1gbird@gmail.com 
+5. What was the ID of the Bitcoin transaction that the user looked at?
+> 5274cfba585a4b5681527a37f95c76340428916bb7480cef6c545f0a28dcd2d7
+6. What was the total BTC value of all the inputs of the Bitcoin transaction?
+> 0.22616302
+7. Which Bitcoin address received the majority of the Bitcoin in the transaction?
+> 18z6bTFjxkXCmhfp8YBetR2wgmoVjXGJZz
 
 ## 5. Citations
 - [NCL Summer Live - Log Analysis](https://www.youtube.com/watch?v=m4s3HJkIR1w)
 - [Cyber Skyline Live: Analyzing an SQL Database](https://www.youtube.com/watch?v=JCZlsuHAdEE)
+- [Epoch Converter](https://www.epochconverter.com/)
+- [ConvertCSV](https://www.convertcsv.com/xml-to-csv.htm)
+- [SQLite Viewer](https://inloop.github.io/sqlite-viewer/)
 - The Trove pages for this Module.
 - Copilot for overall outline and structure.
 
