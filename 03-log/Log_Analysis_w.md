@@ -190,7 +190,10 @@ or to be sure to only count the status code field
 ## 4. History/Database Analysis
 
 ## 5. Citations
-
+- [NCL Summer Live - Log Analysis](https://www.youtube.com/watch?v=m4s3HJkIR1w)
+- [Cyber Skyline Live: Analyzing an SQL Database](https://www.youtube.com/watch?v=JCZlsuHAdEE)
+- The Trove pages for this Module.
+- Copilot for overall outline and structure.
 
 
 
