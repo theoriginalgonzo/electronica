@@ -3,9 +3,9 @@
 ##  0. Outline
 
 - [1. What is Log Analysis?](#1-what-is-log-analysis)
-- [2. Tools for Log Analysis](#2-tools-for-log-analysis)
+- [2. Tools and Info for Log Analysis](#2-tools-and-info-for-log-analysis)
 - [3. Nginx, Squid, and Payment Logs](#3-nginx-squid-and-payment-logs)
-- [4. History and Database Analysis](#4-history-and-database-analysis)
+- [4. History/Database Analysis](#4-historydatabase-analysis)
 - [5. Citations](#5-citations)
 
 ## 1. What is Log Analysis?
@@ -13,7 +13,7 @@
 - Logs are usually stored in plain text format or custom formats and contain information about timestamps, IDs, IP addresses, errors, and other activities that occur within a system.
 - Common NCL log files include SSH logs, web server logs, database logs, and application logs.
 
-## 2. Tools for Log Analysis
+## 2. Tools and Info for Log Analysis
 
 ### `grep`
 - Used to search for specific patterns or keywords in log files.
@@ -22,6 +22,8 @@
   - `-E`: Use extended regular expressions.
   - `-v`: Invert the match (show lines that do not match).
   - `-o`: Print only the matched parts of a line.
+  - `-A`: Print n lines after the match.
+  - `-B`: Print n lines before the match.- Example: 
 - Example: 
   - `grep -i "error" access.log`: returns lines containing "error" (case-insensitive) in the access.log file.
   - `grep -E "404|500" access.log`: searches for lines containing either "404" or "500" in the access.log file.
@@ -48,7 +50,7 @@
   - `/g`: Global replacement (replaces all occurrences in a line).
   - `/d`: Deletes lines matching a pattern.
   - `/p`: Prints lines matching a pattern.
-  - `(pattern)`: Captures a group for use in the replacement string.
+  - `/(pattern)/`: Captures a group for use in the replacement string.
   - `\1`, `\2`, etc.: References captured groups in the replacement string.
 - Example:
   - `sed 's/error/ERROR/g' access.log`: replaces all occurrences of "error" with "ERROR" in the access.log file.
@@ -56,7 +58,7 @@
   - `sed -nr 's/.*\[(.*)\].*/\1/p' access.log`: extracts timestamps from the access.log file using a regular expression.
 
 ### `cut`
-- Used to extract specific fields from log files based on delimiters.
+- Used to extract specific fields from log files based on delimiters. Tab is the default delimiter.
 - flags:
   - `-d`: Specifies the delimiter (e.g., space, comma).
   - `-f`: Specifies the field(s) to extract.
@@ -101,7 +103,93 @@
   - `grep "error" access.log | wc -l`: counts the number of lines containing "error" in the access.log file.
   - `awk '{print $1}' access.log | sort | uniq > ip_addresses.txt`: extracts the first field (e.g., IP addresses) from the access.log file, sorts them, removes duplicates, and saves the result to ip_addresses.txt.
 
+### Timestamps
+- Common formats include:
+  - ISO 8601: `2024-06-01T12:34:56Z` T indicates the start of the time component, and Z indicates that the time is in UTC.
+  - Apache/Nginx: `[01/Jun/2024:12:34:56 +0000]` +0000 indicates the time zone offset from UTC. 
+  - Epoch/Unix time: `1622548800` or `1286536308.779` (number of seconds since January 1, 1970, 00:00:00 UTC) [Epoch Converter](https://www.epochconverter.com/) 
+  - etc.
+
+### IDs
+- Common IDs include:
+  - UUIDv1: `123e4567-e89b-12d3-a456-426614174000` (includes timestamp and MAC address).
+  - UUIDv4: `123e4567-e89b-42d3-a456-426614174000` (randomly generated).
+  - Incremental IDs: `1`, `2`, `3`, etc. (sequentially assigned).
+  - etc.
+
+
 ## 3. Nginx, Squid, and Payment Logs
+When analyzing logs, first `head` or `tail` the log file to get a sense of the structure and format of entries, look specifically at fields that are relevant to your analysis (e.g., timestamps, IDs, IP addresses, status codes). When lost, try giving ChatGPT a log entry and ask it to explain the fields.
+
+### Nginx Logs
+- Nginx logs typically include access logs and error logs, which contain information about client requests, response status codes, and errors.
+
+#### Gym Answers:
+1. How many different IP addresses reached the server?
+> `cat access.log | cut -d ' ' -f 1 | sort | uniq | wc -l`
+2. How many requests yielded a 200 status?
+> `cat access.log | grep " 200 " | wc -l` 
+
+or to be sure to only count the status code field
+
+> `cat access.log | cut -d '"' -f 3 | cut -d " " -f 2 | grep 200 | sort | uniq -c` 
+
+3. How many requests yielded a 400 code?
+4. What IP address rang at the doorbell? (search for door or bell)
+5. What version of the Googlebot visited the website? (search for Googlebot)
+6. Which IP address attempted to exploit the Shellshock vulnerability?
+    - Shellshock is a critical flaw in the Unix Bash shell that lets attackers run unauthorized commands by hiding malicious code inside environment variables. The exploit is triggered by the pattern `() { :; };`.
+> `cat access.log | grep '() { :; };'`
+7. What was the most popular version of Firefox used for browsing the website?
+> `cat access.log | grep  -Eio 'firefox/.*'`
+8. What is the most common HTTP method used?
+9. What is the second most common HTTP method used?
+> `cut -d " " -f 6 access.log | sort | uniq -c`
+10. How many requests were for \x04\x01\x00P\xC6\xCE\x0Eu0\x00?
+> `cat access.log | grep '\\x04\\x01\\x00P\\xC6\\xCE\\x0Eu0\\x00' | wc -l`
+
+
+### Squid Logs
+- Squid logs include access logs that record client requests and cache hits/misses.
+
+#### Gym Answers:
+1. In what year was this log saved?
+> `1286536308.779` (Epoch/Unix timestamp) > October 7, 2010 (UTC).
+2. How many milliseconds did the fastest request take?
+3. How many milliseconds did the longest request take? 
+    - (second field is the time taken in milliseconds)
+> `cat squid_access.log | awk '{print $2}' | sort -n`
+4. How many different IP addresses did the proxy service in this log?
+> `cat squid_access.log | awk '{print $3}' | sort | uniq | wc -l`
+5. How many GET requests were made?
+6. How many POST requests were made?
+> `cat squid_access.log | awk '{print $6}' | sort | uniq –c`
+7. What company created the antivirus used on the host at 192.168.0.224?
+8. What URL is used to download an antivirus update?
+> `cat squid_access.log | grep "192.168.0.224"`
+
+
+### Payment Logs
+- Payment logs may include transaction logs that record details of financial transactions, such as timestamps, transaction IDs, amounts, and statuses.
+- After completing the gym, I saw the guide suggests extracting the XML and converting it to CSV for easier analysis. To do so:
+    - `sed -nr 's/PPAPIService: Request: (.*)/\1/p' payments.log > requests.xml`
+    - `sed -nr 's/PPAPIService: Response: <\?.*\?>(.*)/\1/p' payments.log > responses.xml`
+    - Paste the XML into an online converter (e.g., [ConvertCSV](https://www.convertcsv.com/xml-to-csv.htm)) to get a CSV file (after adding `<xml>` and `</xml>` tags).
+    - Then, use Excel or a similar tool to analyze the CSV file.
+
+#### Gym Answers:
+1. How many transactions are contained in the log?
+> `cat  payments.log | grep -i "transaction" | wc -l`
+2. What is the transaction ID of the largest purchase made in the log?
+> `cat payments.log | grep -Eio '<ebl:OrderTotal currencyID="USD">.*</ebl:OrderTotal>' | sed -r 's/.*>(.*)<.*/\1/' | sort`
+
+> `cat payments.log | grep -A 10 998.6 | grep -i transaction`
+3. Which state made the greatest number of purchases?
+> `cat payments.log | grep -Eio '<ebl:StateOrProvince>.*</ebl:StateOrProvince>' | sed -r 's/.*>(.*)<.*/\1/' | sort | uniq -c | sort`
+
+## 4. History/Database Analysis
+
+## 5. Citations
 
 
 
