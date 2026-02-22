@@ -211,6 +211,7 @@ Gym Answers:
 5. What was the ID of the Bitcoin transaction that the user looked at?
 > 5274cfba585a4b5681527a37f95c76340428916bb7480cef6c545f0a28dcd2d7
 6. What was the total BTC value of all the inputs of the Bitcoin transaction?
+    - Follow the link in the `moz_places` or search the ID on a blockchain explorer.
 > 0.22616302
 7. Which Bitcoin address received the majority of the Bitcoin in the transaction?
 > 18z6bTFjxkXCmhfp8YBetR2wgmoVjXGJZz
