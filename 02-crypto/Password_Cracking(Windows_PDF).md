@@ -94,5 +94,5 @@ Hash cracking is the process of attempting to recover the original input (e.g., 
 - [Hash Functions and Password Hashing](https://en.wikipedia.org/wiki/Hash_function)
 - [Common Hash Types](https://en.wikipedia.org/wiki/List_of_hash_functions)
 - [Cracking Windows Password Hashes](https://trove.cyberskyline.com/3f7c50f299f34ae896cc1d4955be2567)
-- [Cracking PDF Passwords](https://www.thegeekstuff.com/2010/06/pdf-password-cracker/)
+- [Cracking PDF Passwords](https://trove.cyberskyline.com/4f6f61dc54bc47169d7838c2e82bf6d8)
 - Copilot for initial outline and structure.
