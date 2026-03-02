@@ -14,9 +14,7 @@
 ## 2. FTP
 - FTP (File Transfer Protocol) is a standard network protocol used for transferring files between a client and a server over a TCP/IP network.
 - FTP operates on two separate channels: the control channel for sending commands and receiving responses, and the data channel for transferring files.
-- FTP can be used for both anonymous and authenticated file transfers, and it supports various authentication methods, including username/password and anonymous access.
-- FTP is commonly used for uploading and downloading files to and from web servers, as well as for sharing files within a network.
-
+- FTP can be used for both anonymous and authenticated file transfers, and is commonly used for uploading and downloading files to and from web servers, as well as for sharing files within a network.
 ### Common FTP commands 
 - `USER`: to identify the username being used for authentication
 - `PASS`: to identify the password being used for authentication
@@ -27,7 +25,7 @@
 
 
 ### FTP Traffic Gym Guide
-    - Using the cloudshark portal, click on packet and select the TCP stream view on the bottom.
+    Using the cloudshark portal, click on packet and select the TCP stream view on the bottom.
 
 1. What was the first username:password combination attempt made to log in to the server? ex. 'user:password'
 2. What software is the FTP server running? (Name and version)
@@ -43,10 +41,17 @@
 
 ## 3. CAN BUS
 - CAN BUS (Controller Area Network) is a robust vehicle bus standard designed to allow microcontrollers and devices to communicate with each other without a host computer.
-- CAN BUS is widely used in automotive and industrial applications for communication between various electronic control units (ECUs) in a vehicle or machinery.
 - CAN BUS operates on a multi-master, message-oriented protocol, where each device can send and receive messages, but only one device can transmit at a time.
 - CAN BUS messages consist of an identifier, data length code, and data payload, and they can be used to control various functions in a vehicle, such as engine performance, braking, and lighting systems.
 
-### CAN BUS Traffic Analysis
-- When analyzing CAN BUS traffic, you can look for specific message identifiers to understand the actions being performed by different ECUs.
-- You can also analyze the data payload to see the actual information being transmitted, which can help identify potential security issues, such as unauthorized control or data manipulation.
+### CAN BUS Traffic Gym Guide
+    Install Wireshark and open the provided CAN bus capture file. Click on a packet and in details under CAN ID, double click the `= ID` field and select "Apply as Column". Do the same for first field uner Data, and select "Apply as Column". You should now have two new columns in the packet list view, one for CAN ID and one for Data. Export the packet disection as a CSV file and use it to answer the questions.
+
+1. How many unique CAN Bus IDs are present in this capture?
+    - Use `awk -F ','` to print IDs and then find number of unique IDs using `sort`, `uniq`, `wc -l` commands.
+2. How many speed update messages are present in this capture?
+    - Code snippet has `int speed_id = 589;` which indicates that speed updates are sent with CAN ID 589. Use `grep` to find number of messages with this ID.
+
+3. What is the maximum speed, in mph, that this vehicle reached in the capture? 
+    - Extract the data field for messages with CAN ID 589, `awk -F ',' '$7 ~ /589/ {print $8}'`, into a new file. Then, use the `python3 max_speed.py data.txt` script to find the maximum speed in mph. (`tr -d '"'` can be used to remove quotes from the data field if needed).
+
