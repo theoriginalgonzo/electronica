@@ -55,3 +55,10 @@
 3. What is the maximum speed, in mph, that this vehicle reached in the capture? 
     - Extract the data field for messages with CAN ID 589, `awk -F ',' '$7 ~ /589/ {print $8}'`, into a new file. Then, use the `python3 max_speed.py data.txt` script to find the maximum speed in mph. (`tr -d '"'` can be used to remove quotes from the data field if needed).
 
+## 4. Citations
+- [Cyber Skyline Live: Analyzing CAN bus](https://www.youtube.com/watch?v=6b7zpkkOLm0)
+- [FTP Traffic](https://trove.cyberskyline.com/da643ef1fbdf44c399de12d273d281b6)
+- [CAN BUS Traffic](https://trove.cyberskyline.com/41570c1e3a974808a838a9f83c2f6d4a)
+- [Wireshark](https://www.wireshark.org/)
+- ChatGPT for max_speed.py script.
+- Copilot for overall outline and structure.
