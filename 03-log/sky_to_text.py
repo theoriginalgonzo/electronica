@@ -1,11 +1,12 @@
 import struct
 import socket
 from datetime import datetime, timezone
+import sys
 
 def read_int(f):
     return struct.unpack(">I", f.read(4))[0]
 
-with open("hard.sky", "rb") as f:
+with open(sys.argv[1], "rb") as f:
     # ---- HEADER ----
     magic = f.read(8)
     version = struct.unpack(">B", f.read(1))[0]
