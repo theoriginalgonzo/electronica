@@ -2,10 +2,9 @@
 
 ## 0. Outline
 
-- [1. What are hashes and their applications](#1-what-are-hashes-and-password-hashing)
+- [1. What are hashes and their applications](#1-what-are-hashes-and-their-applications)
 - [2. Common Hash Types](#2-common-hash-types)
-- [3. Hash Cracking & Tools](#3-hash-cracking-tools)
-- [3. Tools for Cracking Password Hashes](#3-tools-for-cracking-password-hashes)
+- [3. Hash Cracking and Tools](#3-hash-cracking-and-tools)
 - [4. Cracking Windows Password Hashes](#4-cracking-windows-password-hashes)
 - [5. Cracking PDF Passwords](#5-cracking-pdf-passwords)
 - [6. Citations](#6-citations)
@@ -31,7 +30,7 @@
 
 - **NTLM**: A suite of Microsoft security protocols that includes a hashing algorithm for passwords used in Windows systems. NTLM hashes are 128-bit and represented as a 32-character hexadecimal number. LM hashes, an older and less secure hashing method used in Windows, produce a 128-bit hash value but are considered very weak and easily cracked.
 
-## 3. Hash Cracking & Tools
+## 3. Hash Cracking and Tools
 
 Hash cracking is the process of attempting to recover the original input (e.g., password) from its hash value. This is typically done using various techniques, including:
 
