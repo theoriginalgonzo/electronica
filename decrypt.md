@@ -80,6 +80,21 @@ Cookies
 
 Hidden flags or messages
 
+Question 1: What Cipher Suite was chosen by the secure socket server?
+Select packet #6 (the TLS Server Hello) and look for the “Cipher Suite”. 
+This can be found in the packet dissection under Transport Layer Security → TLSv1.2 Record Layer: Handshake Protocol: Server Hello → Handshake Protocol: Server Hello → Cipher Suite
+
+Answer to question 1:  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+
+Question 2: What is the domain covered by the SSL key?
+
+Select packet #6 (the TLS Server Hello) and look for the “common name” of the SSL certificate. This can be found in the packet dissection under Transport Layer Security → TLSv1.2 Record Layer: Handshake Protocol: Certificate → Handshake Protocol: Certificate → Certificates → Certificate.
+
+Next, look under signed certificate then under issuer where you will see an email address with the domain we are looking for.
+
+Answer to question 2: tomsvacations.com 
+
 ### Step 5 – Locate the Hidden Flag
 
 Scroll through the TLS stream window and look for readable text.
@@ -94,9 +109,11 @@ JSON data
 
 API responses
 
-Once found, record the flag as the solution to the challenge.
+Question 3: What is the flag transferred over HTTPS?
 
+Follow the TLS stream for packet #10 (the request for /flag.txt)
 
+Answer to question 3: SKY-LADN-1435
 
 
 
