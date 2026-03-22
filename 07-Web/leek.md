@@ -21,7 +21,7 @@
 - The server may respond with a Buffer containing uninitialized memory, which could include sensitive information such as the flag.
 - Use the following `curl` command to send a request with a numeric payload:
 ```
-curl 'https://0c34ea85d35b6f1ca5cee5ef65b02e23-leek.web.cityinthe.cloud/add' \
+curl 'https://url/add' \
     -H 'Content-Type: application/json' \
     --data-raw '{"content": 100}'
 ```
